@@ -1,56 +1,53 @@
-🇧🇷 Português | 🇺🇸 [English](#english)
+# STM32 InterCom — ADC → USART → DAC
 
-# stm32-intercom
-
-Intercomunicador bidirecional de voz em STM32F4xx: ADC → USART → DAC a 8 kHz / 115200 bps.
-
-## Hardware · Parâmetros
-
-| Parâmetro | Valor |
-|-----------|-------|
-| Taxa de amostragem | 8.000 Hz |
-| USART1 Tx/Rx | PA9 / PA10 · 115200 bps |
-| ADC1 canal | PA0 · 12 bits · 480 ciclos |
-
-## Periféricos
-
-ADC1 · USART1 · TIM · NVIC
-
-## IDE
-
-Atollic TrueSTUDIO 9.3
-
-## Autores
-
-Vitor Becker — Turma 4324 · Prof. Marcos Zuccolotto
-Centro Tecnológico Liberato — Novo Hamburgo/RS
+🇧🇷 **Português** | 🇺🇸 [English](#english)
 
 ---
 
-<a name="english"></a>
-🇧🇷 [Português](#) | 🇺🇸 English
+## Português
 
-# stm32-intercom
+Sistema de intercomunicação em tempo real para STM32F4xx que captura áudio via ADC, transmite via USART e reproduz via DAC.
 
-Bidirectional voice intercom on STM32F4xx: ADC → USART → DAC at 8 kHz / 115200 bps.
+### O que faz
+- Captura sinal analógico no pino **PA0** com ADC1 a **8 kHz**, resolução de **12 bits**
+- Transmite as amostras pelo **USART1** a **115200 bps** (TX: PA9, RX: PA10)
+- Recebe amostras do canal oposto e reproduz via **DAC**
 
-## Hardware · Parameters
+### Hardware
+| Periférico | Pino | Função |
+|---|---|---|
+| ADC1 CH0 | PA0 | Entrada analógica (microfone) |
+| USART1 TX | PA9 | Transmissão serial |
+| USART1 RX | PA10 | Recepção serial |
+| DAC CH1 | PA4 | Saída analógica (alto-falante) |
 
-| Parameter | Value |
-|-----------|-------|
-| Sampling rate | 8,000 Hz |
-| USART1 Tx/Rx | PA9 / PA10 · 115200 bps |
-| ADC1 channel | PA0 · 12-bit · 480 cycles |
+### Parâmetros
+- Taxa de amostragem: **8 kHz**
+- Resolução ADC/DAC: **12 bits**
+- Baud rate: **115200 bps**
+- Microcontrolador: STM32F4xx (Atollic TrueSTUDIO)
 
-## Peripherals
+---
 
-ADC1 · USART1 · TIM · NVIC
+## English
 
-## IDE
+Real-time intercom system for STM32F4xx that captures audio via ADC, transmits via USART, and plays back via DAC.
 
-Atollic TrueSTUDIO 9.3
+### What it does
+- Captures analog signal on pin **PA0** with ADC1 at **8 kHz**, 12-bit resolution
+- Transmits samples over **USART1** at **115200 bps** (TX: PA9, RX: PA10)
+- Receives samples from the opposite unit and plays back through **DAC**
 
-## Authors
+### Hardware
+| Peripheral | Pin | Function |
+|---|---|---|
+| ADC1 CH0 | PA0 | Analog input (microphone) |
+| USART1 TX | PA9 | Serial transmission |
+| USART1 RX | PA10 | Serial reception |
+| DAC CH1 | PA4 | Analog output (speaker) |
 
-Vitor Becker — Class 4324 · Prof. Marcos Zuccolotto
-Centro Tecnológico Liberato — Novo Hamburgo/RS, Brazil
+### Parameters
+- Sample rate: **8 kHz**
+- ADC/DAC resolution: **12 bits**
+- Baud rate: **115200 bps**
+- MCU: STM32F4xx (Atollic TrueSTUDIO)
